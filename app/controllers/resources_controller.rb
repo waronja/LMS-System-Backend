@@ -1,13 +1,21 @@
 class ResourcesController < ApplicationController
+  rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
   before_action :set_resource, only: %i[ show edit update destroy ]
 
   # GET /resources or /resources.json
   def index
     @resources = Resource.all
+    render json: @resources
   end
 
   # GET /resources/1 or /resources/1.json
   def show
+    @resources = set_resource
+    if @resources
+      render json: @resources, status: :ok
+    else
+      render json: { error: "Resources not found" }
+    end
   end
 
   # GET /resources/new
@@ -21,50 +29,36 @@ class ResourcesController < ApplicationController
 
   # POST /resources or /resources.json
   def create
-    @resource = Resource.new(resource_params)
-
-    respond_to do |format|
-      if @resource.save
-        format.html { redirect_to resource_url(@resource), notice: "Resource was successfully created." }
-        format.json { render :show, status: :created, location: @resource }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @resource.errors, status: :unprocessable_entity }
-      end
-    end
+    @resource = Resource.create!(resource_params)
+    render json: @resource, status: :created
   end
 
   # PATCH/PUT /resources/1 or /resources/1.json
   def update
-    respond_to do |format|
-      if @resource.update(resource_params)
-        format.html { redirect_to resource_url(@resource), notice: "Resource was successfully updated." }
-        format.json { render :show, status: :ok, location: @resource }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @resource.errors, status: :unprocessable_entity }
-      end
-    end
+    @resource = set_resource
+    @resource.update!(resource_params)
+    render json: @resource
   end
 
   # DELETE /resources/1 or /resources/1.json
   def destroy
+    @resource = set_resource
     @resource.destroy
-
-    respond_to do |format|
-      format.html { redirect_to resources_url, notice: "Resource was successfully destroyed." }
-      format.json { head :no_content }
-    end
+    head :no_content
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_resource
-      @resource = Resource.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_resource
+    @resource = Resource.find_by(id: params[:id])
+  end
 
-    # Only allow a list of trusted parameters through.
-    def resource_params
-      params.require(:resource).permit(:name, :lesson_id, :quiz_id)
-    end
+  def render_unprocessable_entity_response(exception)
+    render json: { errors: exception.record.errors.full_messages }, status: :unprocessable_entity
+  end
+
+  # Only allow a list of trusted parameters through.
+  def resource_params
+    params.require(:resource).permit(:name, :lesson_id, :quiz_id)
+  end
 end
