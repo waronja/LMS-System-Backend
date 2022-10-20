@@ -1,0 +1,2 @@
+class SchoolOwner < ApplicationRecord
+end
