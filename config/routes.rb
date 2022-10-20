@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   resources :lessons
   resources :phases
   resources :courses
-  resources :schools
+  resources :schools, only:[:index]
   resources :educators
   resources :students
   resources :school_owners
