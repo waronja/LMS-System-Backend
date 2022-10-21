@@ -1,5 +1,7 @@
 class LessonsController < ApplicationController
-  before_action :set_lesson, only: %i[ show edit update destroy ]
+  
+
+
 
   # GET /lessons or /lessons.json
   def index
@@ -50,4 +52,5 @@ class LessonsController < ApplicationController
     def lesson_params
       params.require(:lesson).permit(:name, :chat_id, :assessment_id, :phase_id)
     end
+
 end

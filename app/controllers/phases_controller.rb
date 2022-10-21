@@ -1,5 +1,5 @@
 class PhasesController < ApplicationController
-  before_action :set_phase, only: %i[ show edit update destroy ]
+
 
   # GET /phases or /phases.json
   def index
@@ -53,4 +53,5 @@ class PhasesController < ApplicationController
     def phase_params
       params.require(:phase).permit(:name, :lesson_id, :course_id, :resource_id)
     end
+
 end
