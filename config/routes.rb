@@ -1,13 +1,14 @@
 Rails.application.routes.draw do
-  resources :resources
+
+  resources :resources, only: [:index, :show, :create, :update, :destroy]
   resources :lessons
   resources :phases
   resources :courses
-
-  resources :schools, only:[:index]
+  resources :schools, only:[:index, :show, :create, :update, :destroy]
   resources :educators
   resources :students
   resources :school_owners
+
 
  
  
@@ -16,4 +17,5 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
+
 end
