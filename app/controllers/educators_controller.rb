@@ -1,4 +1,5 @@
 class EducatorsController < ApplicationController
+
   def index
     educators = Educator.all
     render json: educators

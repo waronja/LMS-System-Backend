@@ -6,6 +6,7 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
+
 puts "seeding..."
 
 school1= School.create(name: "School of Software development", description: " Be a professional developer")
@@ -20,4 +21,5 @@ resource1 =Resource.create(name:"Tutorial",lesson_id:lesson1.id )
 Course.create(name: "Computer Science", school_id:school1.id, student_id:student1.id, educator_id:educator1.id, resource_id: resource1.id)
 
 puts "done seeding!"
+
 
