@@ -1,3 +1,4 @@
+
 class SchoolsController < ApplicationController
     rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
 
@@ -53,3 +54,5 @@ class SchoolsController < ApplicationController
         params.require(:school).permit(:name, :description)
     end
 end
+
+

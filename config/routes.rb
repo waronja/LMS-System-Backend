@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   resources :resources, only: [:index, :show, :create, :update, :destroy]
   resources :lessons
   resources :phases
@@ -7,4 +8,14 @@ Rails.application.routes.draw do
   resources :educators
   resources :students
   resources :school_owners
+
+
+ 
+ 
+
+  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+
+  # Defines the root path route ("/")
+  # root "articles#index"
+
 end
