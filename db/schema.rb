@@ -46,9 +46,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_21_141320) do
 
   create_table "phases", force: :cascade do |t|
     t.string "name"
-    t.integer "lesson_id"
     t.integer "course_id"
-    t.integer "resource_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
