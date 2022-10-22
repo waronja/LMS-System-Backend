@@ -1,8 +1,5 @@
 class LessonsController < ApplicationController
   
-
-
-
   # GET /lessons or /lessons.json
   def index
     @lessons = Lesson.all
@@ -15,15 +12,11 @@ class LessonsController < ApplicationController
     render json: @lesson
   end
 
-
-  
-
   # POST /lessons or /lessons.json
   def create
     @lesson = Lesson.create(lesson_params)
     render json: @lesson, status: :created
-    
-    
+     
   end
 
   # PATCH/PUT /lessons/1 or /lessons/1.json

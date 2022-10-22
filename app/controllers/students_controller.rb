@@ -1,12 +1,9 @@
 class StudentsController < ApplicationController
-
   
   # GET /students or /students.json
   def index
     students = Student.all
     render json: students
-
-  
   end
 
   # GET /students/1 or /students/1.json
@@ -20,13 +17,11 @@ class StudentsController < ApplicationController
     end
   end
 
-  
   # POST /students or /students.json
   def create
     students = Student.create(student_params)
     # if students 
       render json: students, status: :created
- 
   end
 
 

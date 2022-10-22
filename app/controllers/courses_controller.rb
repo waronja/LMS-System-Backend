@@ -1,7 +1,5 @@
 class CoursesController < ApplicationController
 
- 
-
   before_action :set_course, only: %i[ show edit update destroy ]
 
   # GET /courses or /courses.json
@@ -15,8 +13,6 @@ class CoursesController < ApplicationController
     @course = set_course
     render json: @course
   end
-
- 
 
   # GET /courses/1/edit
   def edit
@@ -33,7 +29,6 @@ class CoursesController < ApplicationController
       @course = set_course
       @course.update(course_params)
       render json: @course,status: :created
-      
   end
 
   # DELETE /courses/1 or /courses/1.json
@@ -42,7 +37,6 @@ class CoursesController < ApplicationController
     @course.destroy
     head :no_content
     end
-  
 
   private
     # Use callbacks to share common setup or constraints between actions.
