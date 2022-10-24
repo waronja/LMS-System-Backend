@@ -5,7 +5,7 @@ class CreatCourses < ActiveRecord::Migration[7.0]
       t.integer :school_id
       t.integer :student_id
       t.integer :educator_id
-      t.integer :resource_id
+   
 
       t.timestamps
     end

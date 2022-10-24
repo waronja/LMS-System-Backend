@@ -5,9 +5,15 @@ Rails.application.routes.draw do
   resources :phases
   resources :courses
   resources :schools, only:[:index, :show, :create, :update, :destroy]
-  resources :educators
-  resources :students
+  resources :educators, only:[:index]
+  # resources :students 
   resources :school_owners
+  post "/signup", to: "students#create"
+  # post "/signup", to: "educators#create"
+  get "/me", to: "students#show"
+  # get "/me", to: "educators#show"
+  post "/login", to: "sessions#create"
+  delete "/logout", to: "sessions#destroy"
 
 
  
