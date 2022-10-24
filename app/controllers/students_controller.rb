@@ -3,7 +3,7 @@ class StudentsController < ApplicationController
   # GET /students or /students.json
   def index
     students = Student.all
-    render json: students,include: [:school]
+    render json: students,include: [:school, :course]
 
   
   end
