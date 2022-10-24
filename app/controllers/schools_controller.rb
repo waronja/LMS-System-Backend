@@ -4,7 +4,11 @@ class SchoolsController < ApplicationController
 
     def index
         @schools = School.all
+<<<<<<< HEAD
         render json: @schools
+=======
+        render json: @schools,include: [:school_owner]
+>>>>>>> 308797b36840ce828625ee0bf0b068fa42faecb4
     end
 
     def show
