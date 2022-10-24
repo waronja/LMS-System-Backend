@@ -3,7 +3,7 @@ class PhasesController < ApplicationController
   # GET /phases or /phases.json
   def index
     @phases = Phase.all
-    render json: @phases,include: [:lessons]
+    render json: @phases
   end
 
   # GET /phases/1 or /phases/1.json
