@@ -2,7 +2,7 @@ class EducatorsController < ApplicationController
 
   def index
     educators = Educator.all
-    render json: educators,include: :school
+    render json: educators,include: [:school, :lessons]
   end
 
   

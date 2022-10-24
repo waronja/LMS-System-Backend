@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   resources :resources, only: [:index, :show, :create, :update, :destroy]
-  resources :lessons
+  resources :lessons, only: [:index]
   resources :phases
   resources :courses
   resources :schools, only:[:index, :show, :create, :update, :destroy]
