@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   resources :schools, only:[:index, :show, :create, :update, :destroy]
   resources :educators
   resources :students
-  resources :school_owners
+  resources :school_owners, only: [:index]
 
 
  
