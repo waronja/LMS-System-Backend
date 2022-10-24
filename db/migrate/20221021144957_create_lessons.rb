@@ -5,6 +5,7 @@ class CreateLessons < ActiveRecord::Migration[7.0]
       t.integer :chat_id
       t.integer :assessment_id
       t.integer :phase_id
+      t.integer :educator_id
 
       t.timestamps
     end

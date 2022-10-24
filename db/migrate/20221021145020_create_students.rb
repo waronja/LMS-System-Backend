@@ -8,6 +8,7 @@ class CreateStudents < ActiveRecord::Migration[7.0]
       t.integer :school_id
       t.boolean :isadmin,default:false
 
+
       t.timestamps
     end
   end
