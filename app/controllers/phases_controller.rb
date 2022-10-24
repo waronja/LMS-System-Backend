@@ -1,6 +1,5 @@
 class PhasesController < ApplicationController
 
-
   # GET /phases or /phases.json
   def index
     @phases = Phase.all
@@ -9,8 +8,8 @@ class PhasesController < ApplicationController
 
   # GET /phases/1 or /phases/1.json
   def show
-  @phase = set_phase
-  render json: @phase
+    @phase = set_phase
+    render json: @phase
   end
 
   
@@ -29,8 +28,8 @@ class PhasesController < ApplicationController
   # PATCH/PUT /phases/1 or /phases/1.json
   def update
       @phase = set_phase
-       @phase.update(phase_params)
-       render json: @phase,status: :created
+      @phase.update(phase_params)
+      render json: @phase,status: :created
         
        
   end

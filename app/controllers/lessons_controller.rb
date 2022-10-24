@@ -21,9 +21,9 @@ class LessonsController < ApplicationController
 
   # PATCH/PUT /lessons/1 or /lessons/1.json
   def update
-       @lesson = set_lesson
-       @lesson.update(lesson_params)
-        render json: @lesson,status: :created
+    @lesson = set_lesson
+    @lesson.update(lesson_params)
+    render json: @lesson,status: :created
   end
 
   # DELETE /lessons/1 or /lessons/1.json
