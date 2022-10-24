@@ -15,15 +15,10 @@ class EducatorsController < ApplicationController
     end
   end
 
-  
-
   def create
     educators = Educator.create(educator_params)
-    
-      render json: educators, status: :created
- 
+    render json: educators, status: :created
   end
-
 
   private
     # Use callbacks to share common setup or constraints between actions.
