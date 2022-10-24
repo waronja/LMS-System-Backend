@@ -10,7 +10,6 @@ class StudentsController < ApplicationController
 
   # GET /students/1 or /students/1.json
   def show
-
     students = Student.find_by(id: params[:id])
      if students 
       render json: students
@@ -25,6 +24,16 @@ class StudentsController < ApplicationController
     # if students 
       render json: students, status: :created
   end
+
+  def show
+    student = Student.find_by(id: session[:student_id])
+    if student
+      render json: student
+    else
+      render json: { error: "unauthorized" }, status: :unauthorized
+    end
+  end
+
 
 
   private

@@ -8,7 +8,12 @@ Rails.application.routes.draw do
   resources :educators
   resources :students
   resources :school_owners, only:[:index]
-
+  post "/signup", to: "users#create"
+  post "/signup", to: "educators#create"
+  get "/me", to: "students#show"
+  get "/me", to: "educators#show"
+  post "/login", to: "sessions#create"
+  delete "/logout", to: "sessions#destroy"
 
  
  
