@@ -1,2 +1,0 @@
-class SchoolOwnersController < ApplicationController
-end
