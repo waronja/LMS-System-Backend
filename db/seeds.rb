@@ -5,7 +5,7 @@ school2 = School.create(name:"School of Data science", description:"Be a data an
 student1 = Student.create(first_name:"innocent",last_name:"Dennis",email:"dennis@gmail.com",password_digest:"",isadmin:false,school_id:school1.id)
 educator1 =Educator.create(first_name:"coder",last_name:"success",email:"success@gmail.com",password_digest:"",isadmin:false,school_id:school1.id)
 
-
+school_owner1 =SchoolOwner.create(first_name:"Gideon",last_name:"Langat",email:"langat@gmail.com",password_digest:"", isadmin:true, school_id:school2.id)
 
 lesson1 =Lesson.create(name:"introduction")
 
