@@ -7,7 +7,8 @@ class CreateEducators < ActiveRecord::Migration[7.0]
         t.string :email
         t.string :password_digest
         t.integer :school_id
-        t.boolean :isadmin,default:false
+        t.integer :course_id
+        t.boolean :is_prof,default:false
 
       t.timestamps
     end

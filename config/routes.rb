@@ -5,9 +5,9 @@ Rails.application.routes.draw do
   resources :phases
   resources :courses
   resources :schools, only:[:index, :show, :create, :update, :destroy]
-  resources :educators
+  resources :educators, only: [:index, :create]
   resources :students, only: [:index]
-  resources :school_owners, only: [:index]
+  resources :school_owners, only: [:index, :create]
   post "/signup", to: "students#create"
   post "/login", to: "sessions#create"
   get "/me", to: "students#show"

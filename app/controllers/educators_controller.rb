@@ -2,7 +2,7 @@ class EducatorsController < ApplicationController
 
   def index
     educators = Educator.all
-    render json: educators,include: [:school]
+    render json: educators
   end
 
   
@@ -24,6 +24,11 @@ class EducatorsController < ApplicationController
   #     render json: { error: educator.errors.full_messages }, status: :unprocessable_entity
   #   end
 
+  def create
+    @educator = Educator.create!(educator_params)
+    render json: @educator, status: :created
+  end
+
   #   def show
   #   educator = Educator.find_by(id: session[:student_id])
   #   if educator
@@ -41,6 +46,6 @@ class EducatorsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def educator_params
-      params.require(:educator).permit(:first_name, :last_name, :email, :password_digest, :school_id, :isadmin)
+      params.permit(:first_name, :last_name, :email, :password_digest, :school_id, :course_id, :is_prof)
     end
 end
