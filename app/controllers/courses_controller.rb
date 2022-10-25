@@ -5,7 +5,7 @@ class CoursesController < ApplicationController
   # GET /courses or /courses.json
   def index
     @courses = Course.all
-    render json: @courses,include: [:phases, :resources]
+    render json: @courses
   end
 
   # GET /courses/1 or /courses/1.json

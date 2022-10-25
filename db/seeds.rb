@@ -9,7 +9,7 @@ school2 = School.create(name:"School of Data science", description:"Be a data an
 
 #student instance
 student1 = Student.create(first_name:"innocent",last_name:"Dennis",email:"dennis@gmail.com",password_digest:"",isadmin:false,school_id:school1.id)
-student2 = Student.create(first_name:"dennis",last_name:"innocent",email:"dennis@gmail.com",password_digest:"",isadmin:false,school_id:school1.id)
+educator1 =Educator.create(first_name:"coder",last_name:"success",email:"success@gmail.com",password_digest:"",is_prof:true)
 
 #educator instance
 educator1 = Educator.create(first_name:"coder",last_name:"success",email:"success@gmail.com",password_digest:"",is_prof:false,school_id:school1.id)
