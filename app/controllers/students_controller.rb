@@ -4,8 +4,6 @@ class StudentsController < ApplicationController
   def index
     students = Student.all
     render json: students,include: [:school,:course,:lessons]
-
-  
   end
 
   # GET /students/1 or /students/1.json
@@ -21,7 +19,7 @@ class StudentsController < ApplicationController
 
   # POST /students or /students.json
   def create
-    student = Student.create(student_params)
+    student = Student.create!(student_params)
     if student
       session[:student_id] = student.id
       render json: student, status: :created
@@ -44,7 +42,7 @@ class StudentsController < ApplicationController
   private
 
     def student_params
-      params.permit(:first_name, :last_name, :email, :password,:password_confirmation, :school_id, :isadmin)
+      params.permit(:first_name, :last_name, :email, :password, :password_confirmation, :school_id, :isadmin)
   end
 
   

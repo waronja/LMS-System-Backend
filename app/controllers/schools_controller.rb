@@ -4,7 +4,7 @@ class SchoolsController < ApplicationController
 
     def index
         @schools = School.all
-        render json: @schools,include: [:school_owner,:courses]
+        render json: @schools,include: [:school_owner, :courses]
     end
 
     def show
@@ -51,7 +51,7 @@ class SchoolsController < ApplicationController
     end
 
     def school_params
-        params.require(:school).permit(:name, :description)
+        params.require(:school).permit(:name, :description, :school_owner_id)
     end
 end
 

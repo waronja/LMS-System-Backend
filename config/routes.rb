@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources :courses
   resources :schools, only:[:index, :show, :create, :update, :destroy]
   resources :educators, only:[:index]
-  # resources :students 
+  # resources :students , only: [:index, :show, :create]
   resources :school_owners
   post "/signup", to: "students#create"
   # post "/signup", to: "educators#create"
@@ -15,8 +15,6 @@ Rails.application.routes.draw do
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
 
-
- 
  
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
