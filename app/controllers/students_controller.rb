@@ -25,7 +25,7 @@ class StudentsController < ApplicationController
   #   # if students 
   #     render json: students, status: :created
   # end
-  
+
 #signup request
   def create
     student = Student.create(student_params)
@@ -34,6 +34,16 @@ class StudentsController < ApplicationController
       render json: student, status: :created
     else
       render json: { error: student.errors.full_messages }, status: :unprocessable_entity
+    end
+  end
+
+  # responds to me request
+  def show
+    student = Student.find_by(id: session[:student_id])
+    if student
+      render json: student
+    else
+      render json: { error: "unauthorized" }, status: :unauthorized
     end
   end
 
