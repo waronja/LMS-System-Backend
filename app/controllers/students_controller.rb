@@ -3,10 +3,20 @@ class StudentsController < ApplicationController
   # GET /students or /students.json
   def index
     students = Student.all
-    render json: students,include: [:school, :course]
+    render json: students
 
-  
+    # ,include: [:school, :course]
   end
+
+  # def create
+  #   if Educator.where(email: params[:email]).exists?
+  #     render json: { errors: "Email has already been taken" }, status: :unprocessable_entity
+  #   else
+  #     student = Student.create!(student_params)
+  #     session[:user_id] = student.id
+  #     session[:is_prof] = 0
+  #   end
+  # end
 
   # GET /students/1 or /students/1.json
   # def show
@@ -26,11 +36,12 @@ class StudentsController < ApplicationController
   #     render json: students, status: :created
   # end
 
-#signup request
+# signup request
   def create
     student = Student.create(student_params)
     if student
-      session[:student_id] = student.id
+      session[:user_id] = student.id
+      session[:is_educ] = 0
       render json: student, status: :created
     else
       render json: { error: student.errors.full_messages }, status: :unprocessable_entity
@@ -47,21 +58,10 @@ class StudentsController < ApplicationController
     end
   end
 
-  def show
-    student = Student.find_by(id: session[:student_id])
-    if student
-      render json: student
-    else
-      render json: { error: "unauthorized" }, status: :unauthorized
-    end
-  end
-
-
-
   private
 
     def student_params
-      params.permit(:first_name, :last_name, :email, :password, :password_confirmation, :school_id, :isadmin)
+      params.permit(:first_name, :last_name, :email, :password)
   end
 
   

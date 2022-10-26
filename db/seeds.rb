@@ -8,11 +8,10 @@ school1 = School.create(name:"School of Software development", description:"Be a
 school2 = School.create(name:"School of Data science", description:"Be a data analyst")
 
 #student instance
-student1 = Student.create(first_name:"innocent",last_name:"Dennis",email:"dennis@gmail.com",password_digest:"",isadmin:false,school_id:school1.id)
-educator1 =Educator.create(first_name:"coder",last_name:"success",email:"success@gmail.com",password_digest:"",is_prof:true)
-
+student1 = Student.create(first_name:"innocent",last_name:"Dennis",email:"dennis@gmail.com",password:"",isadmin:false)
 #educator instance
-educator1 = Educator.create(first_name:"coder",last_name:"success",email:"success@gmail.com",password_digest:"",is_prof:false,school_id:school1.id)
+educator1 =Educator.create(first_name:"coder",last_name:"success",email:"success@gmail.com",password_digest: "", isadmin:true)
+educator1 = Educator.create(first_name:"coder",last_name:"success",email:"success@gmail.com",password_digest:"", isadmin:true)
 
 #lesson instance
 lesson1 =Lesson.create(name:"introduction")
