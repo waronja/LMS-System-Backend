@@ -7,46 +7,20 @@ class StudentsController < ApplicationController
 
     # ,include: [:school, :course]
   end
-
-  # def create
-  #   if Educator.where(email: params[:email]).exists?
-  #     render json: { errors: "Email has already been taken" }, status: :unprocessable_entity
-  #   else
-  #     student = Student.create!(student_params)
-  #     session[:user_id] = student.id
-  #     session[:is_prof] = 0
-  #   end
-  # end
-
-  # GET /students/1 or /students/1.json
-  # def show
-
-  #   students = Student.find_by(id: params[:id])
-  #    if students 
-  #     render json: students
-  #    else 
-  #     render json: {error: "student not found"}, status: :not_found
-  #   end
-  # end
-
-  # POST /students or /students.json
-  # def create
-  #   students = Student.create(student_params)
-  #   # if students 
-  #     render json: students, status: :created
-  # end
-
-# signup request
+  
+#signup request
   def create
     student = Student.create(student_params)
     if student
-      session[:user_id] = student.id
-      session[:is_educ] = 0
-      render json: student, status: :created
-    else
-      render json: { error: student.errors.full_messages }, status: :unprocessable_entity
-    end
+    session[:student_id] = student.id
+    render json: student
+  else
+     render json: { error: educator.errors.full_messages }, status: :unprocessable_entity
   end
+end
+  
+
+   
 
   # responds to me request
   def show
@@ -61,7 +35,7 @@ class StudentsController < ApplicationController
   private
 
     def student_params
-      params.permit(:first_name, :last_name, :email, :password)
+      params.permit(:first_name, :last_name, :email, :password, :password_confirmation, :school_id, :isadmin)
   end
 
   
