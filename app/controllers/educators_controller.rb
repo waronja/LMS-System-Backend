@@ -19,14 +19,14 @@ class EducatorsController < ApplicationController
   end
 
     # request me
-    # def show
-    #     educator = Educator.find_by(id: session[:educator_id])
-    #     if educator
-    #       render json: educator
-    #     else
-    #       render json: { error: "unauthorized" }, status: :unauthorized
-    #     end
-    #   end
+    def show
+        educator = Educator.find_by(id: session[:educator_id])
+        if educator
+          render json: educator
+        else
+          render json: { error: "unauthorized" }, status: :unauthorized
+        end
+      end
 
   private
     # Use callbacks to share common setup or constraints between actions.
