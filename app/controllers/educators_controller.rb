@@ -4,6 +4,7 @@ class EducatorsController < ApplicationController
     educators = Educator.all
     render json: educators,include: [:school]
   end
+  
 
   
   # def show
@@ -15,17 +16,18 @@ class EducatorsController < ApplicationController
   #   end
   # end
 
-  # def create
-  #   educator = Educator.create(educator_params)
-  #   if educator
-  #     session[:educator_id] = educator.id
-  #     render json: educator, status: :created
-  #   else
-  #     render json: { error: educator.errors.full_messages }, status: :unprocessable_entity
-  #   end
+  def create
+    educator = Educator.create(educator_params)
+    if educator
+      session[:educator_id] = educator.id
+      render json: educator, status: :created
+    else
+      render json: { error: educator.errors.full_messages }, status: :unprocessable_entity
+    end
+  end
 
   #   def show
-  #   educator = Educator.find_by(id: session[:student_id])
+  #   educator = Educator.find_by(id: session[:educator_id])
   #   if educator
   #     render json: educator
   #   else

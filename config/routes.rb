@@ -6,12 +6,12 @@ Rails.application.routes.draw do
   resources :courses
   resources :schools, only:[:index, :show, :create, :update, :destroy]
   resources :educators, only:[:index]
-  # resources :students 
+  resources :students, only:[:index,:create] 
   resources :school_owners
-  post "/signup", to: "students#create"
+  # post "/signup", to: "students#create"
   # post "/signup", to: "educators#create"
   get "/me", to: "students#show"
-  # get "/me", to: "educators#show"
+  get "/me", to: "educators#show"
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
 
