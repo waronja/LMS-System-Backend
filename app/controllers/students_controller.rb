@@ -1,5 +1,6 @@
 class StudentsController < ApplicationController
-  
+before_action :authorize
+skip_before_action :authorize ,only:[:index,:show]
   # GET /students or /students.json
   def index
     students = Student.all
@@ -39,6 +40,13 @@ end
     def student_params
       params.permit(:first_name, :last_name, :email, :password, :password_confirmation, :school_id, :isadmin)
   end
+
+  def authorize
+        return render json: { error: "Not authorized" }, status: :unauthorized unless session.include? :school_owner_id
+  end
+  # def authorize_student
+  #   return render json: { error: "Not authorized" }, status: :unauthorized unless session.include? :student_id
+  # end
 
   
 end
