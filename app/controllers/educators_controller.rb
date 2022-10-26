@@ -2,7 +2,7 @@ class EducatorsController < ApplicationController
 
   def index
     educators = Educator.all
-    render json: educators,include: [:school]
+    render json: educators
   end
   
 
@@ -16,6 +16,12 @@ class EducatorsController < ApplicationController
   #   end
   # end
 
+  # def create
+  #   educators = Educator.create(educator_params)
+  #   render json: educators, status: :created
+  # end
+
+# signup request for educator
   def create
     educator = Educator.create(educator_params)
     if educator
@@ -26,14 +32,15 @@ class EducatorsController < ApplicationController
     end
   end
 
-  #   def show
-  #   educator = Educator.find_by(id: session[:educator_id])
-  #   if educator
-  #     render json: educator
-  #   else
-  #     render json: { error: "unauthorized" }, status: :unauthorized
-  #   end
-  # end
+    # request me
+    # def show
+    #     educator = Educator.find_by(id: session[:educator_id])
+    #     if educator
+    #       render json: educator
+    #     else
+    #       render json: { error: "unauthorized" }, status: :unauthorized
+    #     end
+    #   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -43,6 +50,6 @@ class EducatorsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def educator_params
-      params.require(:educator).permit(:first_name, :last_name, :email, :password_digest, :school_id, :isadmin)
+      params.require(:educator).permit(:first_name, :last_name, :email, :password, :password_confirmation, :isadmin)
     end
 end
