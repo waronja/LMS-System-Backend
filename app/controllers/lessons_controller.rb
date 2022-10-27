@@ -1,5 +1,6 @@
 class LessonsController < ApplicationController
-  
+    before_action :authorize
+    skip_before_action :authorize ,only:[:index,:show]
   # GET /lessons or /lessons.json
   def index
     @lessons = Lesson.all
@@ -40,8 +41,10 @@ class LessonsController < ApplicationController
   end
 
     # Only allow a list of trusted parameters through.
-  def lesson_params
-    params.require(:lesson).permit(:name, :chat_id, :assessment_id, :phase_id)
-  end
-
+    def lesson_params
+      params.require(:lesson).permit(:name, :chat_id, :assessment_id, :phase_id)
+    end
+def authorize
+  return render json: { error: "Not authorized" }, status: :unauthorized unless session.include? :educator_id
+ end
 end

@@ -1,6 +1,7 @@
 class ResourcesController < ApplicationController
   rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
-  before_action :set_resource, only: %i[ show edit update destroy ]
+  before_action :authorize
+ skip_before_action :authorize ,only:[:index,:show]
 
   # GET /resources or /resources.json
   def index
@@ -49,9 +50,9 @@ class ResourcesController < ApplicationController
 
   private
   # Use callbacks to share common setup or constraints between actions.
-  def set_resource
-    @resource = Resource.find_by(id: params[:id])
-  end
+ def authorize
+  return render json: { error: "Not authorized" }, status: :unauthorized unless session.include? :educator_id
+ end
 
   def render_unprocessable_entity_response(exception)
     render json: { errors: exception.record.errors.full_messages }, status: :unprocessable_entity

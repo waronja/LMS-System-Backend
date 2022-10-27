@@ -1,5 +1,6 @@
 class EducatorsController < ApplicationController
-
+before_action :authorize
+skip_before_action :authorize ,only:[:show]
   def index
     educators = Educator.all
     render json: educators
@@ -38,4 +39,8 @@ class EducatorsController < ApplicationController
     def educator_params
       params.permit(:first_name, :last_name, :email, :password, :password_confirmation, :is_prof)
     end
+    
+     def authorize
+        return render json: { error: "Not authorized" }, status: :unauthorized unless session.include? :school_owner_id
+  end
 end

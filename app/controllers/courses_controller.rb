@@ -1,6 +1,7 @@
 class CoursesController < ApplicationController
+  before_action :authorize
+  skip_before_action :authorize ,only:[:index,:show]
 
-  # before_action :set_course, only: %i[ show edit update destroy ]
 
   # GET /courses or /courses.json
   def index
@@ -48,4 +49,7 @@ class CoursesController < ApplicationController
     def course_params
       params.require(:course).permit(:name, :school_id, :student_id, :educator_id, :resource_id)
     end
+    def authorize
+  return render json: { error: "Not authorized" }, status: :unauthorized unless session.include? :educator_id
+ end
 end
