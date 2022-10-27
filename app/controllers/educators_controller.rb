@@ -8,15 +8,15 @@ class EducatorsController < ApplicationController
 
 
 # signup request for educator
-  def create
-  educator = Educator.create(educator_params)
-  if educator
-    session[:educator_id] = educator.id
-    render json: educator
-  else
-     render json: { error: educator.errors.full_messages }, status: :unprocessable_entity
-  end
-  end
+    def create
+      educator = Educator.create(educator_params)
+      if educator
+        session[:educator_id] = educator.id
+        render json: educator
+      else
+        render json: { error: educator.errors.full_messages }, status: :unprocessable_entity
+      end
+    end
 
     # request me
     def show
@@ -26,7 +26,7 @@ class EducatorsController < ApplicationController
         else
           render json: { error: "unauthorized" }, status: :unauthorized
         end
-      end
+    end
 
   private
     # Use callbacks to share common setup or constraints between actions.
