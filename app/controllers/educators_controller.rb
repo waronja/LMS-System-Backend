@@ -10,7 +10,7 @@ skip_before_action :authorize ,only:[:show]
 
 # signup request for educator
   def create
-  educator = Educator.create(educator_params)
+  educator = Educator.create!(educator_params)
   if educator
     session[:educator_id] = educator.id
     render json: educator
@@ -39,7 +39,7 @@ skip_before_action :authorize ,only:[:show]
     def educator_params
       params.permit(:first_name, :last_name, :email, :password, :password_confirmation, :is_prof)
     end
-    
+
      def authorize
         return render json: { error: "Not authorized" }, status: :unauthorized unless session.include? :school_owner_id
   end

@@ -21,7 +21,7 @@ class PhasesController < ApplicationController
 
   # POST /phases or /phases.json
   def create
-    @phase = Phase.create(phase_params)
+    @phase = Phase.create!(phase_params)
     render json: @phase ,status: :created
 
   end

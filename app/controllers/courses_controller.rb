@@ -21,7 +21,7 @@ class CoursesController < ApplicationController
 
   # POST /courses or /courses.json
   def create
-    @course = Course.create(course_params)
+    @course = Course.create!(course_params)
     render json: @course ,status: :created
   end
 
