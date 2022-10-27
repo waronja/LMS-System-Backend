@@ -1,5 +1,6 @@
 class PhasesController < ApplicationController
-
+  before_action :authorize
+  skip_before_action :authorize ,only:[:index,:show]
   # GET /phases or /phases.json
   def index
     @phases = Phase.all
@@ -52,5 +53,7 @@ class PhasesController < ApplicationController
     def phase_params
       params.require(:phase).permit(:name, :lesson_id, :course_id, :resource_id)
     end
-
+def authorize
+  return render json: { error: "Not authorized" }, status: :unauthorized unless session.include? :educator_id
+ end
 end

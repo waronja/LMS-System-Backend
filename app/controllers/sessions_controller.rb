@@ -35,7 +35,7 @@ class SessionsController < ApplicationController
       session.delete :school_owner_id 
     end
     # def destroy
-    #   session.delete :eductor_id
+    #   session.delete :educator_id
     # end
 
 
