@@ -1,6 +1,6 @@
 
 class SchoolsController < ApplicationController
-    rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
+rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
 before_action :authorize
     def index
         @schools = School.all

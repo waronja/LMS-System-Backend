@@ -1,5 +1,5 @@
 class SchoolOwner < ApplicationRecord
     has_secure_password
-    # has_one :school
+    has_one :school
 
 end
