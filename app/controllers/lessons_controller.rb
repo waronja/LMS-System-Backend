@@ -31,22 +31,20 @@ class LessonsController < ApplicationController
   def destroy
     @lesson = set_lesson
     @lesson.destroy
-    head :no_content
-
-    
+    head :no_content 
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_lesson
-      @lesson = Lesson.find(params[:id])
-    end
+  def set_lesson
+    @lesson = Lesson.find(params[:id])
+  end
 
     # Only allow a list of trusted parameters through.
     def lesson_params
       params.require(:lesson).permit(:name, :chat_id, :assessment_id, :phase_id)
     end
-def authorize
-  return render json: { error: "Not authorized" }, status: :unauthorized unless session.include? :educator_id
- end
+    def authorize
+      return render json: { error: "Not authorized" }, status: :unauthorized unless session.include? :educator_id
+    end
 end

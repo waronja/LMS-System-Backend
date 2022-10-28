@@ -50,6 +50,6 @@ class CoursesController < ApplicationController
       params.require(:course).permit(:name, :school_id, :student_id, :educator_id, :resource_id)
     end
     def authorize
-  return render json: { error: "Not authorized" }, status: :unauthorized unless session.include? :educator_id
- end
+      return render json: { error: "Not authorized" }, status: :unauthorized unless session.include? :educator_id
+    end
 end

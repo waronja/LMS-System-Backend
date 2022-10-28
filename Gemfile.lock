@@ -177,7 +177,11 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
+<<<<<<< HEAD
   active_model_serializers
+=======
+  active_model_serializers (~> 0.10.12)
+>>>>>>> c86d4ab7039608ce483db8cf165eca4fcae13653
   bcrypt (~> 3.1.7)
   bootsnap
   debug
