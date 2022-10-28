@@ -13,8 +13,6 @@ class PhasesController < ApplicationController
     render json: @phase
   end
 
-  
-
   # GET /phases/1/edit
   def edit
   end
@@ -31,8 +29,7 @@ class PhasesController < ApplicationController
       @phase = set_phase
       @phase.update(phase_params)
       render json: @phase,status: :created
-        
-       
+          
   end
 
   # DELETE /phases/1 or /phases/1.json
@@ -53,7 +50,7 @@ class PhasesController < ApplicationController
     def phase_params
       params.permit(:name, :lesson_id, :course_id, :resource_id)
     end
-def authorize
-  return render json: { error: "Not authorized" }, status: :unauthorized unless session.include? :educator_id
- end
+    def authorize
+      return render json: { error: "Not authorized" }, status: :unauthorized unless session.include? :educator_id
+    end
 end
