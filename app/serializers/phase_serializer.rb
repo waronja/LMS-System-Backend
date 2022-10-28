@@ -1,5 +1,5 @@
 class PhaseSerializer < ActiveModel::Serializer
-  attributes :id, :name, :course_id
+  attributes :id, :name
 
-  # belongs_to :course
+  has_many :lessons
 end
