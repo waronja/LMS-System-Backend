@@ -15,13 +15,13 @@ class SchoolOwnersController < ApplicationController
     # end
 
     def show
-    school_owner = SchoolOwner.find_by(id: session[:school_owner_id])
-    if school_owner
-      render json: school_owner
-    else
+      school_owner = SchoolOwner.find_by(id: session[:school_owner_id])
+      if school_owner
+        render json: school_owner
+      else
       render json: { error: "unauthorized" }, status: :unauthorized
+      end
     end
-  end
 
 
     private

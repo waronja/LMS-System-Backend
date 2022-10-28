@@ -1,6 +1,6 @@
 class EducatorsController < ApplicationController
-before_action :authorize
-skip_before_action :authorize ,only:[:show]
+  before_action :authorize
+  skip_before_action :authorize ,only:[:show]
   def index
     educators = Educator.all
     render json: educators
@@ -23,6 +23,7 @@ skip_before_action :authorize ,only:[:show]
     def show
         educator = Educator.find_by(id: session[:educator_id])
         if educator
+          session[:educator_id] = educator.id
           render json: educator
         else
           render json: { error: "unauthorized" }, status: :unauthorized
@@ -37,10 +38,10 @@ skip_before_action :authorize ,only:[:show]
 
     # Only allow a list of trusted parameters through.
     def educator_params
-      params.permit(:first_name, :last_name, :email, :password, :password_confirmation, :is_prof)
+      params.permit(:first_name, :last_name, :email, :password, :password_confirmation, :school_id, :isadmin)
     end
     
      def authorize
         return render json: { error: "Not authorized" }, status: :unauthorized unless session.include? :school_owner_id
-  end
+   end
 end
