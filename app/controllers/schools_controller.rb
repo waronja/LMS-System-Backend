@@ -1,7 +1,7 @@
 
 class SchoolsController < ApplicationController
     rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
-before_action :authorize
+    before_action :authorize
     def index
         @schools = School.all
         render json: @schools
@@ -51,7 +51,7 @@ before_action :authorize
     end
 
     def school_params
-        params.require(:school).permit(:name, :description)
+        params.permit(:name, :description)
     end
     def authorize
         return render json: { error: "Not authorized" }, status: :unauthorized unless session.include? :school_owner_id

@@ -51,7 +51,7 @@ class PhasesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def phase_params
-      params.require(:phase).permit(:name, :lesson_id, :course_id, :resource_id)
+      params.permit(:name, :lesson_id, :course_id, :resource_id)
     end
 def authorize
   return render json: { error: "Not authorized" }, status: :unauthorized unless session.include? :educator_id

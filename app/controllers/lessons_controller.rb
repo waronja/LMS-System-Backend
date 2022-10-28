@@ -44,7 +44,7 @@ class LessonsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def lesson_params
-      params.require(:lesson).permit(:name, :chat_id, :assessment_id, :phase_id)
+      params.permit(:name, :chat_id, :assessment_id, :phase_id)
     end
 def authorize
   return render json: { error: "Not authorized" }, status: :unauthorized unless session.include? :educator_id
