@@ -60,6 +60,10 @@ class ResourcesController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def resource_params
+<<<<<<< HEAD
+    params.permit(:name, :lesson_id, :quiz_id)
+=======
     params.permit(:name, :lesson_id, :quiz_id, :phase_id, :course_id)
+>>>>>>> e49da05c105fbd316556140730bc7caa78f37439
   end
 end
