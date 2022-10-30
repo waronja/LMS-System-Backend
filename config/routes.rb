@@ -13,13 +13,13 @@ Rails.application.routes.draw do
   get "/me", to: "students#show"
   get "/mi", to: "educators#show"
   get "/mu", to: "school_owners#show"
-  # post"/school_owner", to: "school_owners#create"
+  
   
   delete "/logout", to: "sessions#destroy"
   post "/educator", to: "educators#create"
-
-get "*path", to: "fallback#index", constraints: ->(req) { !req.xhr? && req.format.html? }
 end
+get "*path", to: "fallback#index", constraints: ->(req) { !req.xhr? && req.format.html? }
+
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
