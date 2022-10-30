@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   get "/me", to: "students#show"
   get "/mi", to: "educators#show"
   get "/mu", to: "school_owners#show"
-  
+  # post"/school_owner", to: "school_owners#create"
   
   delete "/logout", to: "sessions#destroy"
   post "/educator", to: "educators#create"
