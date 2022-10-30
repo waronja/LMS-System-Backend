@@ -37,7 +37,6 @@ class EducatorsController < ApplicationController
     #   @educator = Educator.find(params[:id])
     # end
 
-    # Only allow a list of trusted parameters through.
     def educator_params
       params.permit(:first_name, :last_name, :email, :password, :password_confirmation, :school_id, :isadmin)
     end

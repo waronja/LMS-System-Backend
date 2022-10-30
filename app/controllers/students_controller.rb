@@ -6,7 +6,6 @@ skip_before_action :authorize ,only:[:show]
     students = Student.all
     render json: students
 
-    # ,include: [:school, :course]
   end
   
 #signup request
