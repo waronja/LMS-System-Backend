@@ -1,40 +1,48 @@
 class StudentsController < ApplicationController
-
-  
+before_action :authorize
+skip_before_action :authorize ,only:[:show]
   # GET /students or /students.json
   def index
     students = Student.all
     render json: students
 
-  
+    # ,include: [:school, :course]
   end
-
-  # GET /students/1 or /students/1.json
+  
+#signup request
+  def create
+    student = Student.create(student_params)
+    if student
+      session[:student_id] = student.id
+      render json: student
+    else
+     render json: { error: educator.errors.full_messages }, status: :unprocessable_entity
+    end
+  end
+  
+  # responds to me request
   def show
-
-    students = Student.find_by(id: params[:id])
-     if students 
-      render json: students
-     else 
-      render json: {error: "student not found"}, status: :not_found
+    student = Student.find_by(id: session[:student_id])
+    if student
+      render json: student
+    else
+      render json: { error: "unauthorized" }, status: :unauthorized
     end
   end
 
-  
-  # POST /students or /students.json
-  def create
-    students = Student.create(student_params)
-    # if students 
-      render json: students, status: :created
- 
-  end
-
-
   private
 
-    def student_params
-      params.permit(:first_name, :last_name, :email, :password_digest, :school_id, :isadmin)
+  def student_params
+      params.permit(:first_name, :last_name, :email, :password, :password_confirmation, :school_id, :isadmin)
   end
+
+  def authorize
+        return render json: { error: "Not authorized" }, status: :unauthorized unless session.include? :school_owner_id
+  end
+  
+  # def authorize_student
+  #   return render json: { error: "Not authorized" }, status: :unauthorized unless session.include? :student_id
+  # end
 
   
 end

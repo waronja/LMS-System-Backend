@@ -1,6 +1,6 @@
 class PhasesController < ApplicationController
-
-
+  before_action :authorize
+  skip_before_action :authorize ,only:[:index,:show]
   # GET /phases or /phases.json
   def index
     @phases = Phase.all
@@ -9,11 +9,9 @@ class PhasesController < ApplicationController
 
   # GET /phases/1 or /phases/1.json
   def show
-  @phase = set_phase
-  render json: @phase
+    @phase = set_phase
+    render json: @phase
   end
-
-  
 
   # GET /phases/1/edit
   def edit
@@ -29,10 +27,9 @@ class PhasesController < ApplicationController
   # PATCH/PUT /phases/1 or /phases/1.json
   def update
       @phase = set_phase
-       @phase.update(phase_params)
-       render json: @phase,status: :created
-        
-       
+      @phase.update(phase_params)
+      render json: @phase,status: :created
+          
   end
 
   # DELETE /phases/1 or /phases/1.json
@@ -51,7 +48,9 @@ class PhasesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def phase_params
-      params.require(:phase).permit(:name, :lesson_id, :course_id, :resource_id)
+      params.permit(:name, :lesson_id, :course_id, :resource_id)
     end
-
+    def authorize
+      return render json: { error: "Not authorized" }, status: :unauthorized unless session.include? :educator_id
+    end
 end
