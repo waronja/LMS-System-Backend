@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
- namespace :api do
+ 
+  
   resources :resources, only: [:index, :show, :create, :update, :destroy]
   resources :lessons, only: [:index, :create, :destroy]
   resources :phases
@@ -17,8 +18,8 @@ Rails.application.routes.draw do
   
   delete "/logout", to: "sessions#destroy"
   post "/educator", to: "educators#create"
-end
-get "*path", to: "fallback#index", constraints: ->(req) { !req.xhr? && req.format.html? }
+
+root "schools#index"
 
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
