@@ -1,10 +1,11 @@
 class SchoolOwnersController < ApplicationController
-     def index
+    def index
         @owners = SchoolOwner.all
         render json: @owners
     end
+    
     def create
-        school_owner = SchoolOwner.create(school_owner_params)
+        school_owner = SchoolOwner.create!(school_owner_params)
         session[:school_owner_id] = school_owner.id
         render json: school_owner
     end

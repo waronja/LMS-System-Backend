@@ -15,7 +15,7 @@ class LessonsController < ApplicationController
 
   # POST /lessons or /lessons.json
   def create
-    @lesson = Lesson.create(lesson_params)
+    @lesson = Lesson.create!(lesson_params)
     render json: @lesson, status: :created
      
   end
@@ -42,7 +42,11 @@ class LessonsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def lesson_params
+<<<<<<< HEAD
+      params.permit(:name, :chat_id, :assessment_id, :phase_id)
+=======
       params.permit(:name, :phase_id, :educator_id, :student_id)
+>>>>>>> e49da05c105fbd316556140730bc7caa78f37439
     end
     def authorize
       return render json: { error: "Not authorized" }, status: :unauthorized unless session.include? :educator_id

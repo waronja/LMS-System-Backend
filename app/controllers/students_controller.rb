@@ -6,12 +6,11 @@ skip_before_action :authorize ,only:[:show]
     students = Student.all
     render json: students
 
-    # ,include: [:school, :course]
   end
   
 #signup request
   def create
-    student = Student.create(student_params)
+    student = Student.create!(student_params)
     if student
       session[:student_id] = student.id
       render json: student
@@ -43,6 +42,6 @@ skip_before_action :authorize ,only:[:show]
   # def authorize_student
   #   return render json: { error: "Not authorized" }, status: :unauthorized unless session.include? :student_id
   # end
-
+    
   
 end

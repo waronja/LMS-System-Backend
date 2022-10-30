@@ -21,7 +21,7 @@ class CoursesController < ApplicationController
 
   # POST /courses or /courses.json
   def create
-    @course = Course.create(course_params)
+    @course = Course.create!(course_params)
     render json: @course ,status: :created
   end
 
@@ -47,7 +47,7 @@ class CoursesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def course_params
-      params.require(:course).permit(:name, :school_id, :student_id, :educator_id, :resource_id)
+      params.permit(:name, :school_id, :student_id, :educator_id, :resource_id)
     end
     def authorize
       return render json: { error: "Not authorized" }, status: :unauthorized unless session.include? :educator_id
