@@ -25,17 +25,17 @@ class SessionsController < ApplicationController
 
  
     # DELETE '/logout'
-    # def destroy
-    #   session.delete :student_id
-    # end
+    def destroy
+      session.delete :student_id
+    end
 
     # def destroy
     #   session.delete :school_owner_id 
     # end
 
-    def destroy
-      session.delete :educator_id
-    end
+    # def destroy
+    #   session.delete :educator_id
+    # end
 
 
 end
