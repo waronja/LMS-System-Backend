@@ -79,14 +79,14 @@ test:
 # Read https://guides.rubyonrails.org/configuring.html#configuring-a-database
 # for a full overview on how database connection configuration can be specified.
 #
-# production:
-#   <<: *default
-#   database: virtualSchool_production
-#   username: virtualSchool
-#   password: <%= ENV["VIRTUALSCHOOL_DATABASE_PASSWORD"] %>
 production:
-adapter: postgresql
-encoding: unicode
-database: production
-host: <%= ENV['DATABASE_HOST'] %>
- pool: 5
+  <<: *default
+  database: virtualSchool_production
+  username: virtualSchool
+  password: <%= ENV["VIRTUALSCHOOL_DATABASE_PASSWORD"] %>
+# production:
+# adapter: postgresql
+# encoding: unicode
+# database: virtualSchool_production
+# host: <%= ENV['DATABASE_HOST'] %>
+#  pool: 5
