@@ -26,8 +26,21 @@ class SessionsController < ApplicationController
  
     # DELETE '/logout'
     def destroy
-      session.delete :student_id
+      if session[:educator_id]
+        session.delete :educator_id
+        head :no_content
+      elsif session[:student_id]
+        session.delete :student_id
+        head :no_content
+      elsif session[:school_owner_id]
+        session.delete :school_owner_id
+        head :no_content
+      else
+        render json: {errors: ["You must be logged in to access this content"] }, status: :unauthorized
+      end
     end
+      # session.delete :student_id || school_owner_id || educator_id
+
 
     # def destroy
     #   session.delete :school_owner_id 
