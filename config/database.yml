@@ -85,12 +85,12 @@
 #   username: virtualSchool
 #   password: <%= ENV["VIRTUALSCHOOL_DATABASE_PASSWORD"] %>
 
-# # production:
-# # adapter: postgresql
-# # encoding: unicode
-# # database: virtualSchool_production
-# # host: <%= ENV['DATABASE_HOST'] %>
-# #  pool: 5
+# production:
+# adapter: postgresql
+# encoding: unicode
+# database: virtualSchool_production
+# host: <%= ENV['DATABASE_HOST'] %>
+#  pool: 5
 
 # PostgreSQL. Versions 9.3 and up are supported.
 #
@@ -143,7 +143,7 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: sendit_test
+  database: virtual_test
 # As with config/credentials.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
 # ever seen by anyone, they now have access to your database.
@@ -164,8 +164,15 @@ test:
 # Read https://guides.rubyonrails.org/configuring.html#configuring-a-database
 # for a full overview on how database connection configuration can be specified.
 #
-production:
-  <<: *default
-  database: virtual_production
-  username: virtualschool
-  password: <%= ENV["VIRTUAL_DATABASE_PASSWORD"] %>
+# production:
+#   <<: *default
+#   database: virtual_production
+#   username: virtualschool
+#   password: <%= ENV["VIRTUAL_DATABASE_PASSWORD"] %>
+
+  production:
+adapter: postgresql
+encoding: unicode
+database: virtualSchool_production
+host: <%= ENV['DATABASE_HOST'] %>
+ pool: 5
