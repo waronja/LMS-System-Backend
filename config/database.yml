@@ -87,6 +87,6 @@ test:
 production:
 adapter: postgresql
 encoding: unicode
-database: production
+database: virtualSchool_production
 host: <%= ENV['DATABASE_HOST'] %>
  pool: 5
