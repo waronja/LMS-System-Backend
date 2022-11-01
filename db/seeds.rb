@@ -12,7 +12,7 @@ educator1 =Educator.create(first_name:"coder",last_name:"success",email:"success
 #lesson instance
 lesson1 =Lesson.create(name:"introduction",student_id:student1.id,educator_id:educator1.id )
 #course instance
-course1= Course.create(name: "Computer Science", school_id:school1.id, student_id:student1.id)
+course1= Course.create(name: "Software Engineering", description: "Learn the basics and fundamentals of creating software", school_id:school1.id, student_id:student1.id)
 #resource instance
 resource1 = Resource.create(name:"Tutorial",lesson_id:lesson1.id,course_id:course1.id )
 #phase instance

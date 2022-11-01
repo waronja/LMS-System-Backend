@@ -39,7 +39,8 @@ gem "bootsnap", require: false
 #serializer
 
 #cors policy
-gem 'rack-cors', '~> 1.1', '>= 1.1.1'
+# gem 'rack-cors', '~> 1.1', '>= 1.1.1'
+gem 'rack-cors'
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
