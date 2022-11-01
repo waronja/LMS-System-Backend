@@ -19,7 +19,7 @@ class SessionsController < ApplicationController
         render json: school_owner,status: :ok
  
       else
-        render json: { errors: 'Invalid Password or Username'}, status: :unauthorized
+        render json: { errors: 'Invalid Password or Email'}, status: :unauthorized
       end
     end
 
@@ -29,12 +29,27 @@ class SessionsController < ApplicationController
     #   session.delete :student_id
     # end
 
-    # def destroy
-    #   session.delete :school_owner_id 
-    # end
+    # # def destroy
+    # #   session.delete :school_owner_id 
+    # # end
+
+    # # def destroy
+    # #   session.delete :educator_id
+    # # end
 
     def destroy
-      session.delete :educator_id
+      if session[:educator_id]
+        session.delete :educator_id
+        head :no_content
+      elsif session[:student_id]
+        session.delete :student_id
+        head :no_content
+      elsif session[:school_owner_id]
+        session.delete :school_owner_id
+        head :no_content
+      else
+        render json: {errors: ["You must be logged in to access this content"] }, status: :unauthorized
+      end
     end
 
 

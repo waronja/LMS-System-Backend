@@ -32,6 +32,13 @@ module VirtualSchool
     # config.eager_load_paths << Rails.root.join("extras")
 
     # Don't generate system test files.
+
+    config.middleware.insert_before 0, Rack::Cors do
+      allow do
+        origins '*'
+        resource '*', headers: :any, methods: %i[get post options head]
+      end
+    end
     config.generators.system_tests = nil
 
     config.action_controller.default_protect_from_forgery = false # unless ENV["RAILS_ENV"] == "production"
