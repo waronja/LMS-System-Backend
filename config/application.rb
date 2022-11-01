@@ -33,7 +33,15 @@ module VirtualSchool
 
     # Don't generate system test files.
     config.generators.system_tests = nil
-
     config.action_controller.default_protect_from_forgery = false # unless ENV["RAILS_ENV"] == "production"
+    
+    Rails.application.config.middleware.insert_before 0, Rack::Cors do
+      allow do
+        origins '*'
+        resource '*',
+          headers: '*',
+          methods: [:get, :post, :put, :patch, :delete, :options, :head]
+      end
+    end
   end
 end
