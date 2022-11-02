@@ -1,8 +1,8 @@
 class CourseSerializer < ActiveModel::Serializer
-  attributes :id, :name, :school_id, :student_id
+  attributes :id, :name, :description
 
-  # belongs_to :school
-  # belongs_to :student
-  has_many :phases
+  has_one :school
+  belongs_to :student
+  # has_many :phases
 
 end

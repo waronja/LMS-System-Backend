@@ -1,6 +1,7 @@
 class EducatorsController < ApplicationController
   # before_action :authorize
   # skip_before_action :authorize ,only:[:show]
+  
   def index
     educators = Educator.all
     render json: educators
@@ -36,7 +37,6 @@ class EducatorsController < ApplicationController
     #   @educator = Educator.find(params[:id])
     # end
 
-    # Only allow a list of trusted parameters through.
     def educator_params
       params.permit(:first_name, :last_name, :email, :password, :password_confirmation, :school_id, :isadmin)
     end

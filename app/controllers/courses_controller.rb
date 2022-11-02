@@ -1,6 +1,6 @@
 class CoursesController < ApplicationController
-  before_action :authorize
-  skip_before_action :authorize ,only:[:index,:show]
+  # before_action :authorize
+  # skip_before_action :authorize ,only:[:index,:show]
 
 
   # GET /courses or /courses.json
@@ -47,7 +47,7 @@ class CoursesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def course_params
-      params.require(:course).permit(:name, :school_id, :student_id, :educator_id, :resource_id)
+      params.permit(:name, :description, :school_id, :student_id)
     end
     def authorize
       return render json: { error: "Not authorized" }, status: :unauthorized unless session.include? :educator_id

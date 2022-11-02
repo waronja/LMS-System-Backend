@@ -16,6 +16,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_24_103605) do
 
   create_table "courses", force: :cascade do |t|
     t.string "name"
+    t.string "description"
     t.integer "school_id"
     t.integer "student_id"
     t.datetime "created_at", null: false
@@ -52,7 +53,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_24_103605) do
   create_table "resources", force: :cascade do |t|
     t.string "name"
     t.integer "lesson_id"
-    t.integer "quiz_id"
     t.integer "phase_id"
     t.integer "course_id"
     t.datetime "created_at", null: false
