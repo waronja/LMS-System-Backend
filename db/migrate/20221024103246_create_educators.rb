@@ -9,7 +9,7 @@ class CreateEducators < ActiveRecord::Migration[7.0]
         t.integer :school_id
         # t.boolean :isadmin, default: true
         # t.integer :school_id
-        t.boolean :isadmin,default:false
+        t.boolean :isprof,default:true
 
       t.timestamps
     end
