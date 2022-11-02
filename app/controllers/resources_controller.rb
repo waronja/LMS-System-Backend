@@ -49,7 +49,7 @@ class ResourcesController < ApplicationController
   end
 
   private
-  # Use callbacks to share common setup or constraints between actions.
+  
  def authorize
   return render json: { error: "Not authorized" }, status: :unauthorized unless session.include? :educator_id
  end
@@ -61,6 +61,10 @@ class ResourcesController < ApplicationController
   # Only allow a list of trusted parameters through.
   def resource_params
     params.permit(:name, :lesson_id, :quiz_id, :phase_id, :course_id)
+  end
+
+  def set_resource
+    resource = Resource.find_by(id: params[:id])
   end
   
 end
