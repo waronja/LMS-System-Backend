@@ -9,11 +9,11 @@ class SchoolOwnersController < ApplicationController
         session[:school_owner_id] = school_owner.id
         render json: school_owner
     end
-    # def destroy
-    #     school_owner = find_school_params
-    #     school_owner.destroy
-    #     head :no_content
-    # end
+    def destroy
+        school_owner = find_school_params
+        school_owner.destroy
+        head :no_content
+    end
 
     def show
       school_owner = SchoolOwner.find_by(id: session[:school_owner_id])
@@ -31,6 +31,6 @@ class SchoolOwnersController < ApplicationController
     end
 
     def find_school_params
-        SchoolOwner.find(params[:id])
+        school_owner = SchoolOwner.find_by(id: params[:id])
     end
 end
