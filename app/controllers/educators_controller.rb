@@ -38,7 +38,7 @@ class EducatorsController < ApplicationController
     # end
 
     def educator_params
-      params.permit(:first_name, :last_name, :email, :password, :password_confirmation, :school_id, :isadmin)
+      params.permit(:first_name, :last_name, :email, :password, :password_confirmation, :school_id, :isprof)
     end
 
      def authorize
