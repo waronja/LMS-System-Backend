@@ -35,7 +35,7 @@ class EducatorsController < ApplicationController
       @educator = set_educator
       @educator.destroy
       head :no_content
-      end
+    end
 
   private
     # Use callbacks to share common setup or constraints between actions.
