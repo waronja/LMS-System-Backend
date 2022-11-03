@@ -31,11 +31,17 @@ class EducatorsController < ApplicationController
         end
     end
 
+    def destroy
+      @educator = set_educator
+      @educator.destroy
+      head :no_content
+      end
+
   private
     # Use callbacks to share common setup or constraints between actions.
-    # def set_educator
-    #   @educator = Educator.find(params[:id])
-    # end
+    def set_educator
+      @educator = Educator.find(params[:id])
+    end
 
     def educator_params
       params.permit(:first_name, :last_name, :email, :password, :password_confirmation, :school_id, :isprof)
