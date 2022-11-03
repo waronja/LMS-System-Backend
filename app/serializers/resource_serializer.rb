@@ -1,5 +1,5 @@
 class ResourceSerializer < ActiveModel::Serializer
-  attributes :id, :name, :lesson_id, :phase_id, :course_id
+  attributes :id, :name
 
   belongs_to :lesson
   belongs_to :phase
