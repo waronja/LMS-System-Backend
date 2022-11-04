@@ -1,6 +1,6 @@
 class PhasesController < ApplicationController
-  # before_action :authorize
-  # skip_before_action :authorize ,only:[:index,:show]
+  before_action :authorize
+  skip_before_action :authorize ,only:[:index,:show]
   # GET /phases or /phases.json
   def index
     @phases = Phase.all

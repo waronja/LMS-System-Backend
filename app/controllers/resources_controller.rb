@@ -1,7 +1,7 @@
 class ResourcesController < ApplicationController
   rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
-  # before_action :authorize
-  # skip_before_action :authorize ,only:[:index,:show]
+  before_action :authorize
+  skip_before_action :authorize ,only:[:index,:show]
 
   # GET /resources or /resources.json
   def index
